@@ -8,9 +8,15 @@
  ***********************************************************************************************************************/
 
 #include <Arduino.h>
-#include <TinyGPSPlus.h>
+#include <TinyGPS++.h>
 
 #define gpsSerial Serial1
+
+
+//RGB LED 
+const int redLED= 4; //red LED connects to digital pin 2
+const int greenLED= 3; //green LED connects to digital pin 4
+const int blueLED= 2; //blue LED connects to digital pin 7
 
 // L'objet TinyGPSPlus
 TinyGPSPlus gps;
@@ -43,6 +49,8 @@ void displayInfo()
 void setup()
 {
  Serial.begin(9600);
+
+ //Initilisation de la communication serrie TX, RX format UART
  gpsSerial.begin(9600);
 }
 
