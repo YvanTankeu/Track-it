@@ -1,5 +1,5 @@
-#ifndef MOTEUR_HPP
-#define MOTEUR_HPP
+#ifndef __MOTEUR_HPP__
+#define __MOTEUR_HPP__
 
 #include "actionneur.hpp"
 
@@ -24,4 +24,4 @@ class Moteur : public Actionneur {
         void pinMoteur(int pinMoteur);
     };
 
-#endif // MOTEUR_HPP
+#endif // __MOTEUR_HPP__
