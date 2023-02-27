@@ -19,9 +19,9 @@ const int greenLED= 3; //green LED connects to digital pin 4
 const int blueLED= 2; //blue LED connects to digital pin 7
 
 // L'objet TinyGPSPlus
-TinyGPSPlus gps;
+//TinyGPSPlus gps;
 
-void displayInfo()
+/*void displayInfo()
 {
   Serial.print(F("Location: ")); 
   if (gps.location.isValid())
@@ -44,22 +44,22 @@ void displayInfo()
     Serial.print(F("INVALID"));
 
   Serial.println();
-}
+}*/
 
 void setup()
 {
- Serial.begin(9600);
+ /*Serial.begin(9600);
 
  //Initilisation de la communication serrie TX, RX format UART
- gpsSerial.begin(9600);
+ gpsSerial.begin(9600);*/
 }
 
 void loop()
 {
   // Cette esquisse affiche des informations chaque fois qu'une nouvelle phrase est correctement encodée.
-  while (gpsSerial.available() > 0)
+  /*while (gpsSerial.available() > 0)
     if (gps.encode(gpsSerial.read()))
       displayInfo();
-  delay(1000);
+  delay(1000);*/
 }
 

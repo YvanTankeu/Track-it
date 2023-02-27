@@ -2,20 +2,35 @@
 #define __OBJET_TRACKIT_HPP__ // Définit la macro OBJET_TRACKIT_HPP pour indiquer que ce code a été inclus
 
 #include "capteurChoc.hpp" // Inclusion du fichier d'en-tête CapteurDeChoc.hpp
+#include "connect.hpp"
+#include <ArduinoMqttClient.h>
+#include <WiFi101.h>
+#include <SPI.h>
 
-class ObjetTrackIt
+
+class TrackIt
 {
-    // Définition de la classe ObjetTrackIt
+    // Définition de la classe TrackIt
 private:
     int idObjet_;       // Identifiant de l'objet
     int idCapteurGPS_;  // Identifiant du capteur GPS
     int idCapteurChoc_; // Identifiant du capteur de choc
     int idLedRGB_;      // Identifiant de la LED RGB
     int idMoteur_;      // Identifiant du moteur
+    Connect wifi_;
+    const char* host_;
+    uint16_t port_;
+    /*WiFiClient wifiClient;
+    MqttClient mqttClient;  // Instance de la classe PubSubClient pour communiquer avec le broker MQTT*/
+
 public:
     // Constructeurs
-    ObjetTrackIt(); // Constructeur par défaut
-    ObjetTrackIt(int idObjet, int idCapteurGPS, int idCapteurChoc, int idLedRGB, int idMoteur); // Constructeur prenant en paramètre tous les identifiants
+    //TrackIt(): mqttClient(wifiClient) {} // Initialisation de mqttClient avec wifiClient
+    //TrackIt(int idObjet, int idCapteurGPS, int idCapteurChoc, int idLedRGB, int idMoteur); // Constructeur prenant en paramètre tous les identifiants
+    TrackIt(Client &client, const char *server, int port); // Constructeur avec client mqtt
+
+    TrackIt(char* nomWifi, char* motDePasse, char* host, uint16_t port);
+    void connectToBrokerByWifi();
 
     // Accesseurs et modificateurs pour l'identifiant de l'objet
     int idObjet() const;

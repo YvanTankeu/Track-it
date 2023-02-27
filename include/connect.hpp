@@ -7,6 +7,8 @@ class Connect
     private:
         char* nomWifi_;  // Nom du réseau Wi-Fi
         char* motDePasse_;  // Mot de passe du réseau Wi-Fi
+        char *host_;
+        uint16_t port_;
 
     // Méthodes publiques de la classe Connect
     public:
@@ -15,6 +17,9 @@ class Connect
 
         // Constructeur avec des paramètres pour initialiser les propriétés nomWifi_ et motDePasse_
         Connect(char* nomWifi, char* motDePasse);
+        
+        // Constructeur avec des paramètres pour initialiser les propriétés nomWifi_ et motDePasse_, broker et port
+        //Connect(char* nomWifi, char* motDePasse,  char *host, uint16_t port);
 
         // Getters pour récupérer les valeurs des propriétés nomWifi_ et motDePasse_
         char* nomWifi() const;
@@ -25,8 +30,14 @@ class Connect
         void motDePasse(char*);
 
         // Méthode pour se connecter au réseau Wi-Fi en utilisant les identifiants fournis
-        void connecter(char* nomWifi, char* motDePasse);
+        void connectWiFi(char* nomWifi, char* motDePasse);
 
+        // Méthode pour se connecter au  bROKER mqtt en utilisant les identifiants fournis
+        void connectToBroker(const char *host, uint16_t port);
+
+        void appendTimestamps(float value);
+
+        void envoyerData();
 };
 
 #endif // Fin de la directive de préprocesseur "ifndef", avec la définition du symbole "__CONNECT_HPP__"
