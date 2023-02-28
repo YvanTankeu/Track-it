@@ -1,5 +1,8 @@
+#ifndef __ARDUINO_H__  // Vérifie si la bibliothèque WiFi101 est déjà incluse ou non
+    #include <Arduino.h>  // Si elle n'est pas incluse, l'inclut
+#endif 
+
 #include "moteur.hpp"
-#include <Arduino.h>
 
 // Constructeurs
 Moteur::Moteur() : idMoteur_(0) {}
@@ -15,7 +18,7 @@ void Moteur::demarrer() {
 
 void Moteur::arreter() {
 // Code pour arrêter le moteur
-    digitalWrite(pinMoteur_, HIGH);
+    digitalWrite(pinMoteur_, LOW);
 }
 
 // Accesseurs et Mutateurs

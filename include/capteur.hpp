@@ -8,12 +8,8 @@ class Capteur {
         std::string idCapteur_; // Identifiant unique du capteur
         std::string typeCapteur_; // Type de capteur (GPS, capteur de choc, etc.)
     public:
-        // Constructeurs
-        Capteur();
-        Capteur(const std::string& idCapteur, const std::string& typeCapteur);
-
         // Méthode pour obtenir l'identifiant du capteur
-        virtual const std::string& idCapteur() const;
+        const std::string& idCapteur() const;
         
         // Méthode abstraite pour obtenir les données du capteur
         virtual double getData() = 0;

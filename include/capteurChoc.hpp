@@ -6,10 +6,13 @@
 class CapteurDeChoc : public Capteur { // Définition de la classe CapteurDeChoc qui hérite de la classe Capteur
 private:
     int idCapteurChoc_; // Identifiant du capteur de choc
+    int pin_;
     bool etat_; // État du capteur de choc
 public:
     CapteurDeChoc(); // Constructeur par défaut
     CapteurDeChoc(int id); // Constructeur prenant en paramètre l'identifiant du capteur
+    CapteurDeChoc(int id, int pin); // Constructeur par défaut
+
 
     bool detecterChoc(); // Méthode pour détecter un choc
     int id() const; // Méthode pour obtenir l'identifiant du capteur (const pour indiquer que la méthode ne modifie pas l'état de l'objet)
