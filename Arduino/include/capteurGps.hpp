@@ -8,7 +8,6 @@ class CapteurGps : public Capteur {
         int idCapteurGps_;
         double latitude_;
         double longitude_;
-        double altitude_;
         double vitesse_;
         
     public:

@@ -2,7 +2,6 @@
 #define __CAPTEUR_HPP__
 
 #include <string>
-
 class Capteur {
     private:
         std::string idCapteur_; // Identifiant unique du capteur
