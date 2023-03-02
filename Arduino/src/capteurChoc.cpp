@@ -17,7 +17,7 @@ CapteurDeChoc::CapteurDeChoc(int id, int pin) : idCapteurChoc_(id),  pin_(pin) {
 bool CapteurDeChoc::detecterChoc() {
     int valeurCapteur = 0; // Variable pour stocker la valeur du capteur
     valeurCapteur = analogRead(pin_);
-    if( aleurCapteur =! 0) // Lire la valeur du capteur
+    if( valeurCapteur =! 0) // Lire la valeur du capteur
         return true; // Si un choc est détecté, retourne true, sinon retourne false
     else
         return false;
