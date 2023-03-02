@@ -11,9 +11,9 @@
 TinyGPSPlus gps;
 
 // Constructeurs
-CapteurGps::CapteurGps() : Capteur(), idCapteurGps_(0), latitude_(0.0), longitude_(0.0), altitude_(0.0), vitesse_(0.0) {}
+CapteurGps::CapteurGps() : Capteur(), idCapteurGps_(0), latitude_(0.0), longitude_(0.0), vitesse_(0.0) {}
 
-CapteurGps::CapteurGps(int idCapteurGps) : Capteur(), idCapteurGps_(idCapteurGps), latitude_(0.0), longitude_(0.0), altitude_(0.0), vitesse_(0.0){}
+CapteurGps::CapteurGps(int idCapteurGps) : Capteur(), idCapteurGps_(idCapteurGps), latitude_(0.0), longitude_(0.0), vitesse_(0.0){}
 
 std::pair<double, double> CapteurGps::getGeolocalisation()
 {
