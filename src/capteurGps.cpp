@@ -10,15 +10,9 @@
 TinyGPSPlus gps;
 
 // Constructeurs
-<<<<<<< HEAD:Arduino/src/capteurGps.cpp
 CapteurGps::CapteurGps() : Capteur(), idCapteurGps_(0), latitude_(0.0), longitude_(0.0), vitesse_(0.0) {}
 
 CapteurGps::CapteurGps(int idCapteurGps) : Capteur(), idCapteurGps_(idCapteurGps), latitude_(0.0), longitude_(0.0), vitesse_(0.0){}
-=======
-CapteurGps::CapteurGps() : idCapteurGps_(0), latitude_(0.0), longitude_(0.0), altitude_(0.0), etat_(false) {}
-
-CapteurGps::CapteurGps(int idCapteurGps) : idCapteurGps_(idCapteurGps), latitude_(0.0), longitude_(0.0), altitude_(0.0), etat_(false) {}
->>>>>>> parent of fe25186 (Testing des fonctions dans le main):src/capteurGps.cpp
 
 // calculer la vitesse de l'objet
 double CapteurGps::calculerVitesse() {
@@ -34,11 +28,6 @@ std::pair<double, double> CapteurGps::getGeolocalisation() {
     latitude_ = gps.location.lat();
     longitude_ = gps.location.lng();
     return std::make_pair(latitude_, longitude_);
-}
-
-//Obtenir l'etat du capteur
-bool CapteurGps::etatCapteur() {
-    return etat_;
 }
 
 // Accesseurs et Mutateurs
@@ -66,18 +55,3 @@ void CapteurGps::longitude(double longitude) {
     longitude_ = longitude;
 }
 
-double CapteurGps::altitude() const {
-    return altitude_;
-}
-
-void CapteurGps::altitude(double altitude) {
-    altitude_ = altitude;
-}
-
-bool CapteurGps::etat() const {
-    return etat_;
-}
-
-void CapteurGps::etat(bool etat) {
-    etat_ = etat;
-}

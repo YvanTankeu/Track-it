@@ -9,17 +9,12 @@ CapteurDeChoc::CapteurDeChoc() : idCapteurChoc_(0), etat_(false) {} // Initialis
 CapteurDeChoc::CapteurDeChoc(int id) : idCapteurChoc_(id), etat_(false) {} // Initialisation des attributs avec l'identifiant du capteur
 
 bool CapteurDeChoc::detecterChoc() {
-<<<<<<< HEAD:Arduino/src/capteurChoc.cpp
     int valeurCapteur = 0; // Variable pour stocker la valeur du capteur
-    valeurCapteur = analogRead(pin_);
-    if( valeurCapteur =! 0) // Lire la valeur du capteur
+    //valeurCapteur = analogRead(pin_);
+    if( (valeurCapteur) != 0) // Lire la valeur du capteur
         return true; // Si un choc est détecté, retourne true, sinon retourne false
     else
         return false;
-=======
-    // Code pour détecter un choc
-    return true; // Si un choc est détecté, retourne true, sinon retourne false
->>>>>>> parent of fe25186 (Testing des fonctions dans le main):src/capteurChoc.cpp
 }
 
 int CapteurDeChoc::id() const {

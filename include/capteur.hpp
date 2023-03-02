@@ -4,12 +4,12 @@
 #include <string>
 class Capteur {
     private:
-        std::string idCapteur_; // Identifiant unique du capteur
+        int idCapteur_; // Identifiant unique du capteur
         std::string typeCapteur_; // Type de capteur (GPS, capteur de choc, etc.)
     public:
         // Constructeurs
         Capteur();
-        Capteur(const std::string& idCapteur, const std::string& typeCapteur);
+        Capteur(const int idCapteur, const std::string& typeCapteur);
 
         // Méthode pour obtenir l'identifiant du capteur
         virtual const std::string& idCapteur() const;

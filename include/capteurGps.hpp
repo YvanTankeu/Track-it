@@ -8,12 +8,7 @@ class CapteurGps : public Capteur {
         int idCapteurGps_;
         double latitude_;
         double longitude_;
-<<<<<<< HEAD:Arduino/include/capteurGps.hpp
         double vitesse_;
-=======
-        double altitude_;
-        bool etat_;
->>>>>>> parent of fe25186 (Testing des fonctions dans le main):include/capteurGps.hpp
         
     public:
         // Constructeurs
