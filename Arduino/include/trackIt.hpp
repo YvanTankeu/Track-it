@@ -20,9 +20,13 @@ private:
     Connect wifi_;
     const char* host_;
     uint16_t port_;
+    /*WiFiClient wifiClient;
+    MqttClient mqttClient;  // Instance de la classe PubSubClient pour communiquer avec le broker MQTT*/
 
 public:
-   
+    // Constructeurs
+    //TrackIt(): mqttClient(wifiClient) {} // Initialisation de mqttClient avec wifiClient
+    //TrackIt(int idObjet, int idCapteurGPS, int idCapteurChoc, int idLedRGB, int idMoteur); // Constructeur prenant en paramètre tous les identifiants
     TrackIt(Client &client, const char *server, int port); // Constructeur avec client mqtt
 
     TrackIt(char* nomWifi, char* motDePasse, char* host, uint16_t port);

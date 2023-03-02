@@ -5,83 +5,79 @@
 #include "capteurGps.hpp"
 #include <Arduino.h>
 #include <TinyGPS++.h>
-#define gpsSerial Serial1
 
 // L'objet TinyGPSPlus
 TinyGPSPlus gps;
 
 // Constructeurs
+<<<<<<< HEAD:Arduino/src/capteurGps.cpp
 CapteurGps::CapteurGps() : Capteur(), idCapteurGps_(0), latitude_(0.0), longitude_(0.0), vitesse_(0.0) {}
 
 CapteurGps::CapteurGps(int idCapteurGps) : Capteur(), idCapteurGps_(idCapteurGps), latitude_(0.0), longitude_(0.0), vitesse_(0.0){}
+=======
+CapteurGps::CapteurGps() : idCapteurGps_(0), latitude_(0.0), longitude_(0.0), altitude_(0.0), etat_(false) {}
 
-std::pair<double, double> CapteurGps::getGeolocalisation()
-{
-    //double vitesse = 0;
-    while (gpsSerial.available() > 0)
-    {
-        if (gps.encode(gpsSerial.read()))
-        {
-            latitude_ = gps.location.lat();
-            longitude_ = gps.location.lng();
-            vitesse_ = gps.speed.kmph();
-        }
-    }
+CapteurGps::CapteurGps(int idCapteurGps) : idCapteurGps_(idCapteurGps), latitude_(0.0), longitude_(0.0), altitude_(0.0), etat_(false) {}
+>>>>>>> parent of fe25186 (Testing des fonctions dans le main):src/capteurGps.cpp
+
+// calculer la vitesse de l'objet
+double CapteurGps::calculerVitesse() {
+    return gps.speed.kmph();
+}
+
+/**
+ * @brief Get the Geolocalisation object
+ * 
+ * @return  retourne une paire de valeurs de type double, représentant respectivement la latitude et la longitude du capteur GPS. 
+ */
+std::pair<double, double> CapteurGps::getGeolocalisation() {
+    latitude_ = gps.location.lat();
+    longitude_ = gps.location.lng();
     return std::make_pair(latitude_, longitude_);
 }
 
-double CapteurGps::getData()
-{
-    // Récupérer la latitude et la longitude du capteur GPS
-    double latitude = getGeolocalisation().first;
-    double longitude = getGeolocalisation().second;
-
-    // Calculer la valeur à retourner (par exemple, la somme de la latitude et de la longitude)
-    double value = latitude + longitude;
-
-    return value;
+//Obtenir l'etat du capteur
+bool CapteurGps::etatCapteur() {
+    return etat_;
 }
 
 // Accesseurs et Mutateurs
-int CapteurGps::idCapteurGps() const
-{
+int CapteurGps::idCapteurGps() const {
     return idCapteurGps_;
 }
 
-void CapteurGps::idCapteurGps(int idCapteurGps)
-{
+void CapteurGps::idCapteurGps(int idCapteurGps) {
     idCapteurGps_ = idCapteurGps;
 }
 
-double CapteurGps::vitesse() const
-{
-    return vitesse_;
-}
-
-void CapteurGps::vitesse(double vitesse)
-{
-    vitesse_ = vitesse;
-}
-
-double CapteurGps::latitude() const
-{
+double CapteurGps::latitude() const {
     return latitude_;
 }
 
-void CapteurGps::latitude(double latitude)
-{
+void CapteurGps::latitude(double latitude) {
     latitude_ = latitude;
 }
 
-
-double CapteurGps::longitude() const
-{
+double CapteurGps::longitude() const {
     return longitude_;
 }
 
-void CapteurGps::longitude(double longitude)
-{
+void CapteurGps::longitude(double longitude) {
     longitude_ = longitude;
 }
 
+double CapteurGps::altitude() const {
+    return altitude_;
+}
 
+void CapteurGps::altitude(double altitude) {
+    altitude_ = altitude;
+}
+
+bool CapteurGps::etat() const {
+    return etat_;
+}
+
+void CapteurGps::etat(bool etat) {
+    etat_ = etat;
+}

@@ -3,8 +3,8 @@
 // -----------------------------------------------------------------------------------------------------------------------
 
 #include "trackIt.hpp"
-#include "capteurGps.hpp"
 
+//#include "connect.cpp"
 #include "connect.hpp"
 
 #ifndef __WIFI101_H__  // Vérifie si la bibliothèque WiFi101 est déjà incluse ou non
@@ -32,7 +32,6 @@ void TrackIt::seConnecterWIFI(const char *ssid, const char *password)
 {
     wifi_.connectWiFi(wifi_.nomWifi(), wifi_.motDePasse());
 }
-
 
 // Définition de la méthode publier
 /*void TrackIt::publier(const char *topic, const char *message) {

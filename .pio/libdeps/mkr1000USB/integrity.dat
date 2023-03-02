@@ -1,0 +1,4 @@
+arduino-libraries/ArduinoMqttClient@^0.1.6
+arduino-libraries/WiFi101@^0.16.1
+256dpi/MQTT@^2.5.0
+mikalhart/TinyGPSPlus@^1.0.3

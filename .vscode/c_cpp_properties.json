@@ -1,0 +1,93 @@
+//
+// !!! WARNING !!! AUTO-GENERATED FILE!
+// PLEASE DO NOT MODIFY IT AND USE "platformio.ini":
+// https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags
+//
+{
+    "configurations": [
+        {
+            "name": "PlatformIO",
+            "includePath": [
+                "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/include",
+                "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/src",
+                "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/TinyGPSPlus/src",
+                "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/ArduinoMqttClient/src",
+                "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/WiFi101/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SPI",
+                "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/MQTT/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/cores/arduino/api/deprecated",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/cores/arduino/api/deprecated-avr-comp",
+                "C:/Users/yvan/.platformio/packages/framework-cmsis/CMSIS/Include",
+                "C:/Users/yvan/.platformio/packages/framework-cmsis-atmel/CMSIS/Device/ATMEL",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/cores/arduino",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/variants/mkr1000",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/HID",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/I2S/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SAMD_AnalogCorrection/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SAMD_BootloaderUpdater/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SBU/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SDU/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SFU/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SNU/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SSU/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/USBHost/src",
+                "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/Wire",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/include",
+                    "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/src",
+                    "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/TinyGPSPlus/src",
+                    "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/ArduinoMqttClient/src",
+                    "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/WiFi101/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SPI",
+                    "c:/Users/yvan/OneDrive - MONCCNB/Documents/PlatformIO/Projects/Track-it/.pio/libdeps/mkr1000USB/MQTT/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/cores/arduino/api/deprecated",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/cores/arduino/api/deprecated-avr-comp",
+                    "C:/Users/yvan/.platformio/packages/framework-cmsis/CMSIS/Include",
+                    "C:/Users/yvan/.platformio/packages/framework-cmsis-atmel/CMSIS/Device/ATMEL",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/cores/arduino",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/variants/mkr1000",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/HID",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/I2S/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SAMD_AnalogCorrection/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SAMD_BootloaderUpdater/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SBU/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SDU/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SFU/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SNU/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/SSU/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/USBHost/src",
+                    "C:/Users/yvan/.platformio/packages/framework-arduino-samd/libraries/Wire",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=60106",
+                "ARDUINO_SAMD_MKR1000",
+                "__SAMD21G18A__",
+                "USE_ARDUINO_MKR_PIN_LAYOUT",
+                "ARDUINO=10805",
+                "F_CPU=48000000L",
+                "USBCON",
+                "USB_VID=0x2341",
+                "USB_PID=0x804E",
+                "USB_PRODUCT=\"Arduino MKR1000\"",
+                "USB_MANUFACTURER=\"Arduino\"",
+                "ARDUINO_ARCH_SAMD",
+                ""
+            ],
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/Users/yvan/.platformio/packages/toolchain-gccarmnoneeabi@1.70201.0/bin/arm-none-eabi-gcc.exe",
+            "compilerArgs": [
+                "-mcpu=cortex-m0plus",
+                "-mthumb",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
