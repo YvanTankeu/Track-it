@@ -2,17 +2,14 @@
 #define __CAPTEUR_HPP__
 
 #include <string>
+
 class Capteur {
     private:
-        int idCapteur_; // Identifiant unique du capteur
+        std::string idCapteur_; // Identifiant unique du capteur
         std::string typeCapteur_; // Type de capteur (GPS, capteur de choc, etc.)
     public:
-        // Constructeurs
-        Capteur();
-        Capteur(const int idCapteur, const std::string& typeCapteur);
-
         // Méthode pour obtenir l'identifiant du capteur
-        virtual const std::string& idCapteur() const;
+        const std::string& idCapteur() const;
         
         // Méthode abstraite pour obtenir les données du capteur
         virtual double getData() = 0;

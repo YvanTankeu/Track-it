@@ -11,8 +11,11 @@ class LED : public Actionneur {
         int vert_; // broche de la LED pour la couleur verte
         int bleu_; // broche de la LED pour la couleur bleue
     public:
+        enum Couleur { ROUGE, VERT, BLEU };
         // Constructeur prenant en paramètres les broches pour chaque couleur
         LED(int idLed, int rouge, int vert, int bleu);
+
+        void startLight(Couleur couleur);
 
         // Méthode virtuelle de la classe mère à implémenter
         void demarrer() override;

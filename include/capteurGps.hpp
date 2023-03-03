@@ -8,15 +8,13 @@ class CapteurGps : public Capteur {
         int idCapteurGps_;
         double latitude_;
         double longitude_;
+        double altitude_;
         double vitesse_;
         
     public:
         // Constructeurs
         CapteurGps();
         CapteurGps(int idCapteurGps);
-
-        // calculer la vitesse de l'objet
-        double calculerVitesse();
 
         /**
          * @brief Get the Geolocalisation object
@@ -25,24 +23,20 @@ class CapteurGps : public Capteur {
          */
         std::pair<double, double> getGeolocalisation();
 
-        //Obtenir l'etat du capteur
-        bool etatCapteur();
+        double getData();
         
         // Accesseurs et Mutateurs
         int idCapteurGps() const;
         void idCapteurGps(int idCapteurGps);
+
+        double vitesse() const;
+        void vitesse(double vitesse);
 
         double latitude() const;
         void latitude(double latitude);
 
         double longitude() const;
         void longitude(double longitude);
-
-        double altitude() const;
-        void altitude(double altitude);
-
-        bool etat() const;
-        void etat(bool etat);
 };
 
 #endif
