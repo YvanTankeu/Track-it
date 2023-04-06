@@ -4,15 +4,7 @@
 // -----------------------------------------------------------------------------------------------------------------------
 
 #include <Arduino.h>
-
-// 02 Includes pour la connexion wifi
-//#include <WiFi.h>
-//#include <WiFiClient.h>
-
 #include "connect.hpp"
-#ifndef __WIFI101_H__  // Vérifie si la bibliothèque WiFi101 est déjà incluse ou non
-    #include <WiFi101.h>  // Si elle n'est pas incluse, l'inclut
-#endif 
 
 #ifndef __MQTT_H__
         #include <ArduinoMqttClient.h>
@@ -21,16 +13,10 @@
 WiFiClient wifiClient;
 MqttClient mqttClient(wifiClient);
 
-
-
 String Payload = "{"; // Chaine de caractère qui contiendra le message envoyer de l'objet vers node-red
 bool first = false;
 
-String RPCData, PrevData;
-
-const char topic[] = "home/HumTemp";
-const char topicTemp[] = "home/temperature";
-
+const char topic[] = "trackIt/data";
 
 /**
  * @brief Construit un nouvel objet de la classe Connect.
@@ -41,12 +27,8 @@ const char topicTemp[] = "home/temperature";
 Connect::Connect(char *nomWifi, char *motDePasse)
     : nomWifi_(nomWifi), motDePasse_(motDePasse) {}
 
-/*// Constructeur avec des paramètres pour initialiser les propriétés nomWifi_, motDePasse_, host et port
-Connect::Connect(char* nomWifi, char* motDePasse,  char* host, uint16_t port) 
-    : nomWifi_(nomWifi), motDePasse_(motDePasse), host_(host), port_(port)
-{
-}*/
-
+Connect::Connect()
+ {}
 
 /**
  * @brief Retourne le nom actuel associé au réseau.
@@ -105,16 +87,12 @@ void Connect::connectWiFi(char *nomWifi, char *motDePasse)
         Serial.print(".");
         delay(5000);
     }
+    wifiConnected_ = true;
     Serial.println("Vous êtes connecté au réseau");
     Serial.println();
 }
 
-/**
- * @brief Méthode pour se connecter au broker MQTT en utilisant les identifiants fournis
- * @param host Le nom du broker MQTT
- * @param port Le numéro de port sur lequel se connecter
- */
-void connectToBroker(const char *host, uint16_t port)
+void Connect::connectToBroker(char *host, uint16_t port)
 {
     Serial.print("Tentative de connexion au COURTIER MQTT: ");
     Serial.println(host);
@@ -127,12 +105,19 @@ void connectToBroker(const char *host, uint16_t port)
         while (1)
             ;
     }
-
+    brokerConnected_ = true;
     Serial.println("Vous êtes connecté au MQTT BROKER!");
     Serial.println();
+
+    // Abonnement à un sujet :
+    Serial.print("Abonnement au topic : ");
+    Serial.println(topic);
+    Serial.println();
+
+    mqttClient.subscribe(topic);
 }
 
-void envoyerData()
+void Connect::envoyerData()
 {
     char attributes[200];
     Payload += "}}";
@@ -148,12 +133,47 @@ void envoyerData()
     Serial.println(Payload.length());
 }
 
-/*
-  Fonctionnalité qui permet de créer la chaine de données a envoyé au broker MQTT
-  Pour le moment, cette chaine ne doit pas dépassé un maximum de 100 caractère
-*/
+int Connect::receiveData() {
+    // Vider la chaîne de caractères avant de recevoir le message
+  String valeurRPCString = "";
+  int valeurRPC = 0; 
+
+  int messageSize = mqttClient.parseMessage();
+  if (messageSize) {
+    // Réception d'un message, affichage du sujet et du contenu
+    Serial.print("Message reçu sur le topic '");
+    Serial.print(mqttClient.messageTopic());
+    Serial.print("', longueur ");
+    Serial.print(messageSize);
+    Serial.println(" octets :");
+
+    // Affichage du contenu du message
+    while (mqttClient.available()) {
+      // lire un caractère dans le message MQTT
+      char c = mqttClient.read();
+      valeurRPCString += c;
+    }
+
+    // convertir la chaîne de caractères en entier
+    valeurRPC = valeurRPCString.toInt();
+    Serial.print("VALEUR RPC APRES CONVERSION = ");
+    Serial.println(valeurRPC);
+  }
+  return valeurRPC;
+}
+
+bool Connect::wifiConnected() const
+{
+    return wifiConnected_;
+}
+
+bool Connect::brokerConnected() const
+{
+    return brokerConnected_;
+}
+
 // {"ts":1666778909000,"values":{
-void appendTimestamps(float value)
+void Connect::appendTimestamps(float value)
 {
   first = false;
   Payload = "{\"ts\":";
@@ -162,15 +182,30 @@ void appendTimestamps(float value)
 }
 
 //"Temperature":23.169,"Humidite":59.411}}
-void appendPayload(String Name, float Val)
+void Connect::appendPayload(String Name, float Val)
 {
   if (first)
   {
-    Payload += ",";
+        Payload += ",";
   }
   Payload += "\"";
   Payload += Name;
   Payload += "\": ";
-  Payload += Val;
+
+  // convertir Val en un nombre à virgule flottante
+  String ValStr = String(Val, 6);
+
+  // extraire les six chiffres après la virgule
+  int dotIndex = ValStr.indexOf('.');
+  String ValAfterDot = ValStr.substring(dotIndex + 1);
+  while (ValAfterDot.length() < 6)
+  {
+        ValAfterDot += '0';
+  }
+
+  // concaténer le résultat dans Payload
+  Payload += ValStr.substring(0, dotIndex + 1);
+  Payload += ValAfterDot;
+
   first = true;
 }
