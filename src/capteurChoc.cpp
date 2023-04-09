@@ -1,34 +1,47 @@
 // -----------------------------------------------------------------------------------------------------------------------
 // -------------------------- Implementation des Fonctions du capteur de choc --------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------
-
+#ifndef __ARDUINO_H__  // Vérifie si la bibliothèque WiFi101 est déjà incluse ou non
+    #include <Arduino.h>  // Si elle n'est pas incluse, l'inclut
+#endif
 #include "capteurChoc.hpp"
 
-CapteurDeChoc::CapteurDeChoc() : idCapteurChoc_(0), etat_(false) {} // Initialisation des attributs par défaut
+CapteurChoc::CapteurChoc() : idCapteurChoc_(0), etat_(false) {} // Initialisation des attributs par défaut
 
-CapteurDeChoc::CapteurDeChoc(int id) : idCapteurChoc_(id), etat_(false) {} // Initialisation des attributs avec l'identifiant du capteur
+CapteurChoc::CapteurChoc(int id) : idCapteurChoc_(id), etat_(false) {} // Initialisation des attributs avec l'identifiant du capteur
 
-bool CapteurDeChoc::detecterChoc() {
+CapteurChoc::CapteurChoc(int id, u_int8_t pin) : idCapteurChoc_(id),  pin_(pin) {
+    pinMode(pin_, INPUT_PULLDOWN);
+}
+
+bool CapteurChoc::detecterChoc() {
     int valeurCapteur = 0; // Variable pour stocker la valeur du capteur
-    //valeurCapteur = analogRead(pin_);
-    if( (valeurCapteur) != 0) // Lire la valeur du capteur
+    valeurCapteur =  digitalRead(pin_);
+    if( valeurCapteur != 0) // Lire la valeur du capteur
         return true; // Si un choc est détecté, retourne true, sinon retourne false
     else
         return false;
 }
 
-int CapteurDeChoc::id() const {
+int CapteurChoc::id() const {
     return idCapteurChoc_; // Retourne l'identifiant du capteur
 }
 
-void CapteurDeChoc::setId(int id) {
+void CapteurChoc::setId(int id) {
     idCapteurChoc_ = id; // Modifie l'identifiant du capteur
 }
 
-bool CapteurDeChoc::etat() const {
+bool CapteurChoc::etat() const {
     return etat_; // Retourne l'état du capteur
 }
 
-void CapteurDeChoc::setEtat(bool etat) {
+void CapteurChoc::setEtat(bool etat) {
     etat_ = etat; // Modifie l'état du capteur
+}
+
+double CapteurChoc::getData()
+{
+    double value = 0;
+
+    return value;
 }

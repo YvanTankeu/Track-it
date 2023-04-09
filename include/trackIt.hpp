@@ -18,7 +18,7 @@ private:
     int idLedRGB_;      // Identifiant de la LED RGB
     int idMoteur_;      // Identifiant du moteur
     Connect wifi_;
-    const char* host_;
+    char* host_;
     uint16_t port_;
 
 public:

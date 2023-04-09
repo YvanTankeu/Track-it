@@ -1,12 +1,16 @@
 #ifndef __CONNECT_HPP__  // Début de la directive de préprocesseur "ifndef", qui évite les inclusions multiples du fichier d'en-tête "Connect.hpp"
 #define __CONNECT_HPP__  // Définition du symbole "__CONNECT_HPP__"
-
+#ifndef __WIFI101_H__  // Vérifie si la bibliothèque WiFi101 est déjà incluse ou non
+    #include <WiFi101.h>  // Si elle n'est pas incluse, l'inclut
+#endif 
 class Connect
 {
     // Propriétés privées de la classe Connect
     private:
         char* nomWifi_;  // Nom du réseau Wi-Fi
         char* motDePasse_;  // Mot de passe du réseau Wi-Fi
+        bool wifiConnected_;
+        bool brokerConnected_;
         char *host_;
         uint16_t port_;
 
@@ -32,49 +36,26 @@ class Connect
         // Méthode pour se connecter au réseau Wi-Fi en utilisant les identifiants fournis
         void connectWiFi(char* nomWifi, char* motDePasse);
 
-        // Méthode pour se connecter au  bROKER mqtt en utilisant les identifiants fournis
-        void connectToBroker(const char *host, uint16_t port);
+        bool wifiConnected() const;
+
+        bool brokerConnected() const;
+
+        /**
+         * @brief Méthode pour se connecter au broker MQTT en utilisant les identifiants fournis
+         * @param host Le nom du broker MQTT
+         * @param port Le numéro de port sur lequel se connecter
+         */
+        void connectToBroker(char *host, uint16_t port);
+
+        void appendPayload(String Name, float Val);
 
         void appendTimestamps(float value);
+        
+        String receiveData();
 
         void envoyerData();
+
+        
 };
 
 #endif // Fin de la directive de préprocesseur "ifndef", avec la définition du symbole "__CONNECT_HPP__"
-
-/*
-#ifndef __CONNECT_HPP__
-#define __CONNECT_HPP__
-
-#include <string>
-
-class Connect
-{
-    // Propriétés privées de la classe Connect
-    private:
-        std::string nomWifi_;
-        std::string motDePasse_;
-
-    // Méthodes publiques de la classe Connect
-    public:
-        // Constructeur par défaut
-        Connect();
-
-        Connect(const std::string& nomWifi, const std::string& motDePasse);
-
-        // Getters
-        const std::string& nomWifi() const;
-        const std::string& motDePasse() const;
-
-        // Setters
-        void nomWifi(const std::string&);
-        void motDePasse(const std::string&);
-
-        // Se connecter au réseau Wi-Fi
-        void connecter(const std::string& nomWifi, const std::string& motDePasse);
-
-};
-
-#endif //__CONNECT_HPP___
-
- */

@@ -133,11 +133,9 @@ void Connect::envoyerData()
     Serial.println(Payload.length());
 }
 
-int Connect::receiveData() {
+String Connect::receiveData() {
     // Vider la chaîne de caractères avant de recevoir le message
   String valeurRPCString = "";
-  int valeurRPC = 0; 
-
   int messageSize = mqttClient.parseMessage();
   if (messageSize) {
     // Réception d'un message, affichage du sujet et du contenu
@@ -145,7 +143,7 @@ int Connect::receiveData() {
     Serial.print(mqttClient.messageTopic());
     Serial.print("', longueur ");
     Serial.print(messageSize);
-    Serial.println(" octets :");
+    Serial.print(" octets : ");
 
     // Affichage du contenu du message
     while (mqttClient.available()) {
@@ -153,13 +151,9 @@ int Connect::receiveData() {
       char c = mqttClient.read();
       valeurRPCString += c;
     }
-
-    // convertir la chaîne de caractères en entier
-    valeurRPC = valeurRPCString.toInt();
-    Serial.print("VALEUR RPC APRES CONVERSION = ");
-    Serial.println(valeurRPC);
+    Serial.println(valeurRPCString);
   }
-  return valeurRPC;
+  return valeurRPCString;
 }
 
 bool Connect::wifiConnected() const
