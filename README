@@ -1,0 +1,24 @@
+TRACK-IT
+
+Track-It est un projet innovant qui vise à améliorer la sécurité routière en surveillant la vitesse des bus en temps réel, en les géolocalisant et en permettant l'arrêt à distance de leur moteur en cas de besoin.
+
+Ce projet a été conçu pour répondre à un besoin urgent de contrôle de la vitesse, étant donné que 30% des accidents de la route sont causés par un excès de vitesse. En mettant en œuvre ce système de suivi, nous espérons réduire le nombre d'accidents et encourager les conducteurs à adopter une conduite plus responsable.
+
+Fonctionnalités
+Surveiller la vitesse des bus en temps réel
+Géolocaliser les bus en temps réel
+Permettre l'arrêt à distance du moteur des bus en cas de besoin
+Enregistrer les événements de collision et les alerter en temps réel
+Analyser les données de conduite pour améliorer la sécurité routière
+Technologies utilisées
+Django : un framework web pour Python
+Django REST framework : une extension de Django pour construire des API REST
+PostgreSQL : un système de gestion de base de données relationnelles
+Raspberry Pi : une carte d'ordinateur monocarte
+Arduino : une plateforme de prototypage électronique
+
+Équipe
+Yvan Mbouenda : développeur full-stack
+Jean-Claude Tatcham : responsable de projet
+Marie-France Ayissi : designer UI/UX
+Nous sommes fiers de contribuer à la sécurité routière et espérons que notre projet sera utile pour réduire le nombre d'accidents de la route causés par un excès de vitesse.

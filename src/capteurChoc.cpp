@@ -15,10 +15,14 @@ CapteurChoc::CapteurChoc(int id, u_int8_t pin) : idCapteurChoc_(id),  pin_(pin) 
 }
 
 bool CapteurChoc::detecterChoc() {
-    int valeurCapteur = 0; // Variable pour stocker la valeur du capteur
+    // Variable pour stocker la valeur du capteur
+    int valeurCapteur = 0; 
     valeurCapteur =  digitalRead(pin_);
-    if( valeurCapteur != 0) // Lire la valeur du capteur
-        return true; // Si un choc est détecté, retourne true, sinon retourne false
+    
+     // Lire la valeur du capteur
+      // Si un choc est détecté, retourne true, sinon retourne false
+    if( valeurCapteur != 0)
+        return true; 
     else
         return false;
 }

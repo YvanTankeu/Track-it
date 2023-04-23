@@ -96,7 +96,7 @@ void Connect::connectToBroker(char *host, uint16_t port)
 {
     Serial.print("Tentative de connexion au COURTIER MQTT: ");
     Serial.println(host);
-
+    
     if (!mqttClient.connect(host, port))
     {
         Serial.print("La connexion MQTT a échoué ! Code d'erreur = ");
@@ -119,32 +119,38 @@ void Connect::connectToBroker(char *host, uint16_t port)
 
 void Connect::envoyerData()
 {
-    char attributes[200];
+    // Ajoute une accolade fermante à la fin de la chaîne de caractères Payload
     Payload += "}}";
+
+    // Convertit la chaîne de caractères Payload en un tableau de caractères attributes de taille 200
+    char attributes[200];
     Payload.toCharArray(attributes, 200);
     
+    // Envoie le message contenant les données au serveur MQTT
     mqttClient.beginMessage(topic);
     mqttClient.print(attributes);
     mqttClient.endMessage();
 
+    // Affiche la longueur et le contenu de la chaîne de caractères Payload à des fins de débogage
     Serial.print("Payload -> ");
     Serial.println(Payload);
     Serial.print("Payload length -> ");
     Serial.println(Payload.length());
 }
 
+
 String Connect::receiveData() {
     // Vider la chaîne de caractères avant de recevoir le message
   String valeurRPCString = "";
   int messageSize = mqttClient.parseMessage();
-  if (messageSize) {
+  if (messageSize>1) {
     // Réception d'un message, affichage du sujet et du contenu
     Serial.print("Message reçu sur le topic '");
     Serial.print(mqttClient.messageTopic());
     Serial.print("', longueur ");
     Serial.print(messageSize);
     Serial.print(" octets : ");
-
+    
     // Affichage du contenu du message
     while (mqttClient.available()) {
       // lire un caractère dans le message MQTT

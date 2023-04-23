@@ -52,3 +52,31 @@ void LED::arreter() {
     digitalWrite(vert_, LOW);
     digitalWrite(bleu_, LOW);
 }
+
+void LED::blink(unsigned long duree, Couleur couleur) {
+    unsigned long currentMillis = millis();
+    static unsigned long previousMillis = currentMillis;
+    static bool ledState = false;
+    static int blinkCount = 0;
+    
+    if (currentMillis - previousMillis >= duree) {
+        previousMillis = currentMillis;
+        
+        // Allume ou éteint la LED selon l'état actuel et la couleur spécifiée
+        if (ledState == false) {
+            startLight(couleur);
+            ledState = true;
+        }
+        else {
+            arreter();
+            ledState = false;
+        }
+        
+        blinkCount++;
+    }
+    
+    if (blinkCount == 6) {  // On fait clignoter la LED 3 fois (3 allumages et 3 extinctions)
+        blinkCount = 0;
+        arreter();
+    }
+}

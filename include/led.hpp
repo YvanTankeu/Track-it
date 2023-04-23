@@ -17,11 +17,14 @@ class LED : public Actionneur {
 
         void startLight(Couleur couleur);
 
+        void blink(unsigned long duree, Couleur couleur);
+
         // Méthode virtuelle de la classe mère à implémenter
         void demarrer() override;
 
         // Méthode virtuelle de la classe mère à implémenter
         void arreter() override;
+
 };
 
 #endif

@@ -18,16 +18,22 @@ CapteurGps::CapteurGps(int idCapteurGps) : Capteur(), idCapteurGps_(idCapteurGps
 
 std::pair<double, double> CapteurGps::getGeolocalisation()
 {
-    //double vitesse = 0;
+    // Cette fonction récupère la position actuelle du bus à partir du module GPS
+    // Boucle pour lire les données provenant du module GPS
     while (gpsSerial.available() > 0)
     {
+         // Si les données sont valides, mise à jour de la position et de la vitesse
         if (gps.encode(gpsSerial.read()))
         {
+            // Obtention de la latitude et de la longitude
             latitude_ = gps.location.lat();
             longitude_ = gps.location.lng();
+
+            // Obtention de la vitesse en km/h
             vitesse_ = gps.speed.kmph();
         }
     }
+    // Retour de la paire de doubles contenant la latitude et la longitude
     return std::make_pair(latitude_, longitude_);
 }
 
